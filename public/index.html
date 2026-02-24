@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live Forum</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <div class="bg"></div>
+
+    <main class="wrap">
+      <!-- JOIN -->
+      <section id="join" class="card">
+        <div class="brand">
+          <div class="logo">💬</div>
+          <div>
+            <h1>Live Forum</h1>
+            <p>Realtime chat • persistent messages • online presence</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Your display name</label>
+          <div class="row">
+            <input id="name" placeholder="2–20 chars, unique while online" maxlength="20" />
+            <button id="joinBtn" class="btn">Join</button>
+          </div>
+          <div id="joinErr" class="error"></div>
+        </div>
+
+        <div class="tips">
+          <div class="tip">✅ Open a second tab to see Online count update</div>
+          <div class="tip">✅ Try same name in two tabs → should reject</div>
+          <div class="tip">✅ Refresh → messages remain (SQLite)</div>
+        </div>
+      </section>
+
+      <!-- CHAT -->
+      <section id="chat" class="card hidden">
+        <header class="topbar">
+          <div class="left">
+            <div class="title">Chat Room</div>
+            <div class="meta">
+              <span class="pill">You: <b id="me"></b></span>
+              <span class="pill">Online: <b id="online">0</b></span>
+            </div>
+          </div>
+          <button id="leaveBtn" class="btn ghost" title="Reload to leave">Leave</button>
+        </header>
+
+        <div id="msgs" class="msgs"></div>
+
+        <form id="form" class="composer">
+          <input id="text" placeholder="Type message... (Enter to send)" maxlength="500" />
+          <button class="btn" type="submit">Send</button>
+        </form>
+        <div id="msgErr" class="error"></div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      Built with Node + Express + Socket.IO + SQLite
+    </footer>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
